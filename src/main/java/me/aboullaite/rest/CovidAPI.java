@@ -23,7 +23,8 @@ public class CovidAPI {
     }
 
     public Country countryStats(String country){
-        return apiCall("all", Country.class);
+        return apiCall("countries/" + country, Country.class);
+
     }
 
     public List<Country> allCountryStats(){
@@ -31,7 +32,7 @@ public class CovidAPI {
     }
 
     public History history( String country){
-        return this.apiCall("historical/"+country, History.class);
+        return this.apiCall("historical/" + country, History.class);
     }
 
     private <T> T apiCall(String path, Class<T> tClass){

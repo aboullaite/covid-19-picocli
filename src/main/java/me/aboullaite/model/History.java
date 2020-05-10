@@ -11,7 +11,7 @@ public class History {
 
     @SuppressWarnings("unchecked")
     @JsonProperty("timeline")
-    private void unpackNested(Map<String,Object> timeline) {
+    public void unpackNested(Map<String,Object> timeline) {
         Map<String, Integer> casesMap = (Map<String, Integer>)timeline.get("cases");
         this.cases = casesMap.values().toArray(new Integer[casesMap.values().size()]);
         Map<String, Integer> deathsMap = (Map<String, Integer>)timeline.get("deaths");
@@ -19,6 +19,19 @@ public class History {
         Map<String, Integer> recoveredMap = (Map<String, Integer>)timeline.get("recovered");
         this.recovered = recoveredMap.values().toArray(new Integer[recoveredMap.values().size()]);
     }
+    @JsonProperty("cases")
+    public void unpackNestedCases(Map<String,Object> globalCases) {
+        this.cases = globalCases.values().toArray(new Integer[globalCases.values().size()]);
+    }
+    @JsonProperty("deaths")
+    public void unpackNestedDeaths(Map<String,Object> globalDeaths) {
+        this.deaths = globalDeaths.values().toArray(new Integer[globalDeaths.values().size()]);
+    }
+    @JsonProperty("recovered")
+    public void unpackNestedRecovered(Map<String,Object> globalRecovered) {
+        this.recovered = globalRecovered.values().toArray(new Integer[globalRecovered.values().size()]);
+    }
+
 
     public String getCountry() {
         return country;

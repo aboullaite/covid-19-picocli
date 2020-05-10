@@ -5,7 +5,7 @@ import me.aboullaite.utils.PrintUtils;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
-
+import picocli.CommandLine.Help.Ansi;
 import java.util.Arrays;
 import java.util.concurrent.Callable;
 
@@ -28,18 +28,31 @@ public class Covid19Cli implements Callable<Integer> {
 
     public Integer call() throws Exception {
         if(graph){
+            if ("all".equals(this.country)) {
+                this.colorise("Global");
+            } else {
+                this.colorise(this.country);
+            }
             PrintUtils.printGrapgh(covidAPI.history(this.country));
         }else{
             if (all){
+                this.colorise("Global");
                 PrintUtils.printCountryStatTable(covidAPI.allCountryStats());
             }else if(this.country.equals("all")) {
                 PrintUtils.printGlobalTable(Arrays.asList(covidAPI.globalStats()));
             }else{
+                this.colorise(this.country);
                 PrintUtils.printCountryStatTable(Arrays.asList(covidAPI.countryStats(this.country)));
             }
 
         }
 
         return 0;
+    }
+
+    private void colorise(String text){
+        String str = Ansi.AUTO.string("@|bold,green, ****** Printing %s's data****** |@\n");
+        System.out.printf(str, text);
+
     }
 }

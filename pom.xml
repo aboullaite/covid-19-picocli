@@ -94,6 +94,7 @@
                         --allow-incomplete-classpath
                         -H:ReflectionConfigurationFiles=classes/reflection.json
                         -H:+ReportExceptionStackTraces
+                        -H:EnableURLProtocols=https
                     </buildArgs>
                     <skip>false</skip>
                 </configuration>

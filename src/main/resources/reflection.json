@@ -1,5 +1,4 @@
 [
-
 {
   "name" : "org.glassfish.jersey.client.JerseyClientBuilder",
   "allDeclaredConstructors": true,
@@ -243,6 +242,20 @@
 },
 {
 "name" : "org.jvnet.hk2.internal.IterableProviderImpl",
+"allDeclaredConstructors": true,
+"allPublicConstructors": true,
+"allDeclaredMethods": true,
+"allPublicMethods": true
+},
+  {
+"name" : "org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJsonProvider",
+"allDeclaredConstructors": true,
+"allPublicConstructors": true,
+"allDeclaredMethods": true,
+"allPublicMethods": true
+},
+  {
+"name" : "org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJaxbJsonProvider",
 "allDeclaredConstructors": true,
 "allPublicConstructors": true,
 "allDeclaredMethods": true,
@@ -518,6 +531,15 @@
 "allDeclaredMethods": true,
 "allPublicMethods": true
 },
+  {
+"name" : "org.glassfish.jersey.internal.LocalizationMessages",
+"allDeclaredConstructors": true,
+"allPublicConstructors": true,
+"allDeclaredFields": true,
+"allPublicFields": true,
+"allDeclaredMethods": true,
+"allPublicMethods": true
+},
 {
 "name" : "org.glassfish.jersey.process.internal.RequestScoped",
 "allDeclaredConstructors": true,
@@ -532,5 +554,180 @@
     "methods": [
       { "name": "<init>", "parameterTypes": [] }
     ]
+  },
+  {
+    "name" : "org.glassfish.jersey.jackson.JacksonFeature",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name" : "org.glassfish.jersey.jackson.JacksonFeature",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name" : "org.glassfish.jersey.internal.config.ExternalPropertiesConfigurationFeature",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name" : "org.glassfish.jersey.message.internal.MessageBodyFactory",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name" : "com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name" : "com.fasterxml.jackson.databind.ser.std.SqlDateSerializer",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name" : "java.util.List",
+    "methods" : [
+      {"name":"add","parameterTypes":["java.lang.Object"] },
+      {"name":"get","parameterTypes":["int"] }
+    ]
+  }
+,
+  {
+    "name":"java.net.Inet4Address",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  }
+,
+  {
+    "name":"java.net.Inet6Address",
+    "methods":[{"name":"<init>","parameterTypes":[] }],
+    "fields":[
+      {"name":"cached_scope_id"},
+      {"name":"holder6"}
+    ]
+  }
+,
+  {
+    "name":"java.net.Inet6Address$Inet6AddressHolder",
+    "fields":[
+      {"name":"ipaddress"},
+      {"name":"scope_id"},
+      {"name":"scope_id_set"},
+      {"name":"scope_ifname"}
+    ]
+  }
+,
+  {
+    "name":"java.net.InetAddress",
+    "fields":[
+      {"name":"holder"},
+      {"name":"preferIPv6Address"}
+    ]
+  }
+,
+  {
+    "name":"java.net.InetAddress$InetAddressHolder",
+    "fields":[
+      {"name":"address"},
+      {"name":"family"},
+      {"name":"hostName"},
+      {"name":"originalHostName"}
+    ]
+  }
+,
+  {
+    "name":"java.net.InterfaceAddress",
+    "methods":[{"name":"<init>","parameterTypes":[] }],
+    "fields":[
+      {"name":"address"},
+      {"name":"broadcast"},
+      {"name":"maskLength"}
+    ]
+  }
+,
+  {
+    "name":"java.net.NetworkInterface",
+    "methods":[{"name":"<init>","parameterTypes":[] }],
+    "fields":[
+      {"name":"addrs"},
+      {"name":"bindings"},
+      {"name":"childs"},
+      {"name":"defaultIndex"},
+      {"name":"displayName"},
+      {"name":"index"},
+      {"name":"name"},
+      {"name":"parent"},
+      {"name":"virtual"}
+    ]
+  }
+,
+  {
+    "name":"java.net.SocketException"
+  }
+,
+  {
+    "name":"java.net.AbstractPlainSocketImpl",
+    "fields":[
+      {"name":"closePending"},
+      {"name":"fdLock"},
+      {"name":"timeout"},
+      {"name":"trafficClass"}
+    ]
+  }
+,
+  {
+    "name":"java.net.SocketImpl",
+    "fields":[
+      {"name":"address"},
+      {"name":"fd"},
+      {"name":"localport"},
+      {"name":"port"},
+      {"name":"serverSocket"}
+    ]
+  },
+  {
+    "name" : "java.lang.Integer"
+  },
+  {
+    "name" : "me.aboullaite.model.Country",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name" : "me.aboullaite.model.History",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
   }
 ]

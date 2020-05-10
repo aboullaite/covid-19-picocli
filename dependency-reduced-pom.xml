@@ -57,7 +57,8 @@
                         --report-unsupported-elements-at-runtime
                         --allow-incomplete-classpath
                         -H:ReflectionConfigurationFiles=classes/reflection.json
-                        -H:+ReportExceptionStackTraces</buildArgs>
+                        -H:+ReportExceptionStackTraces
+                        -H:EnableURLProtocols=https</buildArgs>
           <skip>false</skip>
         </configuration>
       </plugin>
