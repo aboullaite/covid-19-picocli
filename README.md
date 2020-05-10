@@ -1,5 +1,9 @@
 # covid-19-picocli
-Track the COVID-19 disease in the command line. Worldwide, for all countries, for one country.
+Track the COVID-19 disease in the command line:
++ 📚 Worldwide Coronavirus disease (COVID-19) reporting
++ 🔢 Daily COVID-19 statistics for many countries 
++ 🗃️ Data: Country, Cases, Deaths, Recovered, Active, Critical, Per Million
++ 📈 Line Charts
 ```bash
 Usage: cov19 [-aghV] [-c=<country>]
 Track covid-19 from your command line
@@ -10,7 +14,7 @@ Track covid-19 from your command line
   -V, --version             Print version information and exit.
 ```
 It is built using java, [picocli](https://picocli.info/), with support to generate a native binary using [graal VM](https://www.graalvm.org/)
-
+Inspired from [ahmadawais/corona-cli](https://github.com/ahmadawais/corona-cli)
 ### Build the app
 The app uses maven as build tool. To build the app, simply run the command below:
 ```bash
