@@ -10,7 +10,8 @@
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>    </properties>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
 <dependencies>
     <dependency>
         <groupId>info.picocli</groupId>
@@ -47,19 +48,61 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>info.picocli</groupId>
+                            <artifactId>picocli-codegen</artifactId>
+                            <version>4.2.0</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-shade-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <phase>package</phase>
+                                    <goals>
+                                        <goal>shade</goal>
+                                    </goals>
+                                    <configuration>
+                                        <transformers>
+                                            <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+                                            <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                                <mainClass>me.aboullaite.Covid19Cli</mainClass>
+                                            </transformer>
+                                        </transformers>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+            <plugin>
                 <groupId>org.graalvm.nativeimage</groupId>
                 <artifactId>native-image-maven-plugin</artifactId>
                 <version>20.0.0</version>
                 <configuration>
                     <mainClass>me.aboullaite.Covid19Cli</mainClass>
                     <imageName>cov19-cli</imageName>
+                    <buildArgs>
+                        --no-fallback
+                        --report-unsupported-elements-at-runtime
+                        --allow-incomplete-classpath
+                        -H:ReflectionConfigurationFiles=classes/reflection.json
+                        -H:+ReportExceptionStackTraces
+                    </buildArgs>
+                    <skip>false</skip>
                 </configuration>
                 <executions>
                     <execution>
                         <goals>
                             <goal>native-image</goal>
                         </goals>
-                        <phase>package</phase>
+                        <phase>verify</phase>
                     </execution>
                 </executions>
             </plugin>
