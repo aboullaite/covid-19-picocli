@@ -13,7 +13,9 @@ Track covid-19 from your command line
   -h, --help                Show this help message and exit.
   -V, --version             Print version information and exit.
 ```
-It is built using java, [picocli](https://picocli.info/), with support to generate a native binary using [graal VM](https://www.graalvm.org/)
+It is built using java, [picocli](https://picocli.info/), with support to generate a native binary using [graal VM](https://www.graalvm.org/).
+<a href="https://asciinema.org/a/GZgh2sqHtTab8j6NXRGGnplnD" target="_blank"><img src="https://asciinema.org/a/GZgh2sqHtTab8j6NXRGGnplnD.svg" /></a>
+
 Inspired from [ahmadawais/corona-cli](https://github.com/ahmadawais/corona-cli)
 ### Build the app
 The app uses maven as build tool. To build the app, simply run the command below:
