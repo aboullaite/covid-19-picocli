@@ -1,8 +1,10 @@
 package me.aboullaite.rest;
 
-import me.aboullaite.model.Coutry;
+import me.aboullaite.model.Country;
 import me.aboullaite.model.History;
 
+import javax.ws.rs.ClientErrorException;
+import javax.ws.rs.ServerErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -15,23 +17,46 @@ public class CovidAPI {
     private Client client = ClientBuilder.newClient();
     private WebTarget covidTarget = client.target(BASE_URL);
 
-    public Coutry globalStats(){
+    public Country globalStats(){
        return covidTarget.path("all").request(MediaType.APPLICATION_JSON)
-               .get(Coutry.class);
+               .get(Country.class);
     }
 
-    public Coutry countryStats(String country){
-        return covidTarget.path("countries").path(country).request(MediaType.APPLICATION_JSON)
-                .get(Coutry.class);
+    public Country countryStats(String country){
+        return apiCall("all", Country.class);
     }
 
-    public List<Coutry> allCountryStats(){
-        return covidTarget.path("countries").request(MediaType.APPLICATION_JSON)
-                .get(new GenericType<List<Coutry>>() {});
+    public List<Country> allCountryStats(){
+        return apiCall("countries", new GenericType<List<Country>>() {});
     }
 
     public History history( String country){
-        return covidTarget.path("historical").path(country).request(MediaType.APPLICATION_JSON)
-                .get(History.class);
+        return this.apiCall("historical/"+country, History.class);
     }
+
+    private <T> T apiCall(String path, Class<T> tClass){
+        try {
+            return covidTarget.path(path).request(MediaType.APPLICATION_JSON)
+                    .get(tClass);
+        }catch (ClientErrorException cex){
+            System.out.printf("Something happened in our side: %s", cex.getMessage());
+        }catch (ServerErrorException sex){
+            System.out.printf("Something happened in server side: %s", sex.getMessage());
+        }
+        return null;
+    }
+
+    private <T> T apiCall(String path, GenericType<T> tClass){
+        try {
+            return covidTarget.path(path).request(MediaType.APPLICATION_JSON)
+                    .get(tClass);
+        }catch (ClientErrorException cex){
+            System.out.printf("Something happened in our side: %s", cex.getMessage());
+        }catch (ServerErrorException sex){
+            System.out.printf("Something happened in server side: %s", sex.getMessage());
+        }
+        return null;
+    }
+
+
 }

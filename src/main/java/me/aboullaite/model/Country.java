@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.sql.Timestamp;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Coutry {
+public class Country {
     private String country;
     private CountryInfo info;
     private int cases;
@@ -24,7 +24,7 @@ public class Coutry {
     private Timestamp updated;
     private int affectedCountries;
 
-    public Coutry() {
+    public Country() {
     }
 
     public String getCountry() {
@@ -155,23 +155,23 @@ public class Coutry {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Coutry)) return false;
+        if (!(o instanceof Country)) return false;
 
-        Coutry coutry = (Coutry) o;
+        Country country = (Country) o;
 
-        if (getCases() != coutry.getCases()) return false;
-        if (getTodayCases() != coutry.getTodayCases()) return false;
-        if (getDeaths() != coutry.getDeaths()) return false;
-        if (getTodayDeaths() != coutry.getTodayDeaths()) return false;
-        if (getRecovered() != coutry.getRecovered()) return false;
-        if (getActive() != coutry.getActive()) return false;
-        if (getCritical() != coutry.getCritical()) return false;
-        if (getTests() != coutry.getTests()) return false;
-        if (getCasesPerOneMillion() != coutry.getCasesPerOneMillion()) return false;
-        if (getDeathsPerOneMillion() != coutry.getDeathsPerOneMillion()) return false;
-        if (!getCountry().equals(coutry.getCountry())) return false;
-        if (!getInfo().equals(coutry.getInfo())) return false;
-        return getUpdated().equals(coutry.getUpdated());
+        if (getCases() != country.getCases()) return false;
+        if (getTodayCases() != country.getTodayCases()) return false;
+        if (getDeaths() != country.getDeaths()) return false;
+        if (getTodayDeaths() != country.getTodayDeaths()) return false;
+        if (getRecovered() != country.getRecovered()) return false;
+        if (getActive() != country.getActive()) return false;
+        if (getCritical() != country.getCritical()) return false;
+        if (getTests() != country.getTests()) return false;
+        if (getCasesPerOneMillion() != country.getCasesPerOneMillion()) return false;
+        if (getDeathsPerOneMillion() != country.getDeathsPerOneMillion()) return false;
+        if (!getCountry().equals(country.getCountry())) return false;
+        if (!getInfo().equals(country.getInfo())) return false;
+        return getUpdated().equals(country.getUpdated());
     }
 
     @Override

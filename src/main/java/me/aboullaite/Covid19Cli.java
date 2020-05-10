@@ -1,7 +1,5 @@
 package me.aboullaite;
 
-import me.aboullaite.model.Coutry;
-import me.aboullaite.model.History;
 import me.aboullaite.rest.CovidAPI;
 import me.aboullaite.utils.PrintUtils;
 import picocli.CommandLine;
