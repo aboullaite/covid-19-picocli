@@ -27,21 +27,25 @@ public class Covid19Cli implements Callable<Integer> {
     }
 
     public Integer call() throws Exception {
-        this.colorise(this.country);
-
-        if(graph){
-            PrintUtils.printGrapgh(covidAPI.history(this.country));
-        }else{
-            if (all){
-                PrintUtils.printCountryStatTable(covidAPI.allCountryStats());
-            }else if(this.country.equals("all")) {
-                PrintUtils.printGlobalTable(Arrays.asList(covidAPI.globalStats()));
-            }else{
-                PrintUtils.printCountryStatTable(Arrays.asList(covidAPI.countryStats(this.country)));
-            }
-
+        if (this.all && !this.country.equals("all")){
+            System.out.println(Ansi.AUTO.string("@|bold,red, ****** Cannot combine global (`-a`) and country (`-c`) options ****** |@\n"));
+            return 1;
         }
 
+        this.colorise(this.country);
+        if(this.graph){
+            PrintUtils.printGrapgh(covidAPI.history(this.country));
+            return 0;
+        }
+        if (this.all){
+            PrintUtils.printCountryStatTable(covidAPI.allCountryStats());
+            return 0;
+        }
+        if(this.country.equals("all")) {
+            PrintUtils.printGlobalTable(Arrays.asList(covidAPI.globalStats()));
+            return 0;
+        }
+        PrintUtils.printCountryStatTable(Arrays.asList(covidAPI.countryStats(this.country)));
         return 0;
     }
 
