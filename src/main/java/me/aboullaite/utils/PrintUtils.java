@@ -35,7 +35,7 @@ public class PrintUtils {
                 new Column().header("Deaths ppm").with(c -> String.valueOf(c.getDeathsPerOneMillion())),
                 new Column().header("Tests ppm").with(c -> String.valueOf(c.getTestsPerOneMillion())),
                 new Column().header("Affected Countries").with(c -> String.valueOf(c.getAffectedCountries())),
-                new Column().header("Last updated").with(c -> String.valueOf(sdf.format(c.getUpdated())))
+                new Column().header("Last updated").with(c -> sdf.format(c.getUpdated()))
         )));
         }
 
@@ -44,7 +44,20 @@ public class PrintUtils {
     public static void printCountryStatTable(List<Country> country){
         if (country != null && !country.contains(null)) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-            System.out.println(AsciiTable.getTable(country, Arrays.asList(new Column().header("Country").with(c -> String.valueOf(c.getCountry())), new Column().header("Total cases").with(c -> String.valueOf(c.getCases())), new Column().header("Today cases").with(c -> String.valueOf(c.getTodayCases())), new Column().header("Total deaths").with(c -> String.valueOf(c.getDeaths())), new Column().header("Today deaths").with(c -> String.valueOf(c.getTodayDeaths())), new Column().header("Total recovered").with(c -> String.valueOf(c.getRecovered())), new Column().header("Total active").with(c -> String.valueOf(c.getActive())), new Column().header("Total critical").with(c -> String.valueOf(c.getCritical())), new Column().header("Total tests").with(c -> String.valueOf(c.getTests())), new Column().header("Cases ppm").with(c -> String.valueOf(c.getCasesPerOneMillion())), new Column().header("Deaths ppm").with(c -> String.valueOf(c.getDeathsPerOneMillion())), new Column().header("Tests ppm").with(c -> String.valueOf(c.getTestsPerOneMillion())), new Column().header("Last updated").with(c -> String.valueOf(sdf.format(c.getUpdated()))))));
+            System.out.println(AsciiTable.getTable(country, Arrays.asList(
+                    new Column().header("Country").with(c -> String.valueOf(c.getCountry())),
+                    new Column().header("Total cases").with(c -> String.valueOf(c.getCases())),
+                    new Column().header("Today cases").with(c -> String.valueOf(c.getTodayCases())),
+                    new Column().header("Total deaths").with(c -> String.valueOf(c.getDeaths())),
+                    new Column().header("Today deaths").with(c -> String.valueOf(c.getTodayDeaths())),
+                    new Column().header("Total recovered").with(c -> String.valueOf(c.getRecovered())),
+                    new Column().header("Total active").with(c -> String.valueOf(c.getActive())),
+                    new Column().header("Total critical").with(c -> String.valueOf(c.getCritical())),
+                    new Column().header("Total tests").with(c -> String.valueOf(c.getTests())),
+                    new Column().header("Cases ppm").with(c -> String.valueOf(c.getCasesPerOneMillion())),
+                    new Column().header("Deaths ppm").with(c -> String.valueOf(c.getDeathsPerOneMillion())),
+                    new Column().header("Tests ppm").with(c -> String.valueOf(c.getTestsPerOneMillion())),
+                    new Column().header("Last updated").with(c -> sdf.format(c.getUpdated())))));
         }
 
     }
@@ -61,7 +74,10 @@ public class PrintUtils {
             g.setRecovered(ASCIIGraph.fromSeries(recovered).withTickFormat(DF).withNumRows(ROWS_NUM).plot());
 
 
-            System.out.println(AsciiTable.getTable(Arrays.asList(g), Arrays.asList(new Column().header("History of Cases in the last 30 days").maxColumnWidth(MAX_WIDTH).headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(graph -> graph.getCases()), new Column().header("History of deaths in the last 30 days").maxColumnWidth(MAX_WIDTH).headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(graph -> graph.getDeaths()), new Column().header("History of Recovered in the last 30 days").maxColumnWidth(MAX_WIDTH).headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(graph -> graph.getRecovered())
+            System.out.println(AsciiTable.getTable(Arrays.asList(g), Arrays.asList(
+                    new Column().header("History of Cases in the last 30 days").maxColumnWidth(MAX_WIDTH).headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(graph -> graph.getCases()),
+                    new Column().header("History of deaths in the last 30 days").maxColumnWidth(MAX_WIDTH).headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(graph -> graph.getDeaths()),
+                    new Column().header("History of Recovered in the last 30 days").maxColumnWidth(MAX_WIDTH).headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(graph -> graph.getRecovered())
 
             )));
         }

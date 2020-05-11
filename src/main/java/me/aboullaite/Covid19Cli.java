@@ -27,21 +27,16 @@ public class Covid19Cli implements Callable<Integer> {
     }
 
     public Integer call() throws Exception {
+        this.colorise(this.country);
+
         if(graph){
-            if ("all".equals(this.country)) {
-                this.colorise("Global");
-            } else {
-                this.colorise(this.country);
-            }
             PrintUtils.printGrapgh(covidAPI.history(this.country));
         }else{
             if (all){
-                this.colorise("Global");
                 PrintUtils.printCountryStatTable(covidAPI.allCountryStats());
             }else if(this.country.equals("all")) {
                 PrintUtils.printGlobalTable(Arrays.asList(covidAPI.globalStats()));
             }else{
-                this.colorise(this.country);
                 PrintUtils.printCountryStatTable(Arrays.asList(covidAPI.countryStats(this.country)));
             }
 
@@ -50,8 +45,9 @@ public class Covid19Cli implements Callable<Integer> {
         return 0;
     }
 
-    private void colorise(String text){
-        String str = Ansi.AUTO.string("@|bold,green, ****** Printing %s's data****** |@\n");
+    private void colorise(String country){
+        String text = country.equalsIgnoreCase("all") ? "Global" : country;
+        String str = Ansi.AUTO.string("@|bold,green, ****** Printing %s's data ****** |@\n");
         System.out.printf(str, text);
 
     }
